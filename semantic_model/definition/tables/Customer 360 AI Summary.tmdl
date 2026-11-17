@@ -1,0 +1,110 @@
+/// Unified Customer 360 schema; shipped policy, risk scores and recommendations are synthetic prepared inputs
+table 'Customer 360 AI Summary'
+
+	/// Average prepared churn-risk score (0 to 100); not a calibrated probability
+	measure 'Avg Databricks Churn Score' = AVERAGE('Customer 360 AI Summary'[DatabricksChurnScore])
+		formatString: 0.0
+
+	/// Number of accounts flagged with Critical or High Churn Risk by Databricks ML and D365 SLA breaches
+	measure 'High Risk Accounts Count' = CALCULATE(COUNTROWS('Customer 360 AI Summary'), 'Customer 360 AI Summary'[AIHealthStatus] IN {"Critical Churn Risk", "High Churn Risk"})
+		formatString: #,##0
+
+	column AccountNumber
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+	column AccountName
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: AccountName
+
+	column Industry
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Industry
+
+	column CustomerSegment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CustomerSegment
+
+	column City
+		dataType: string
+		summarizeBy: none
+		sourceColumn: City
+
+	column StateProvince
+		dataType: string
+		summarizeBy: none
+		sourceColumn: StateProvince
+
+	column AnnualRevenueUSD
+		dataType: double
+		formatString: $#,##0
+		summarizeBy: sum
+		sourceColumn: AnnualRevenueUSD
+
+	column SLATier
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SLATier
+
+	column ExecutiveSponsor
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ExecutiveSponsor
+
+	column PrimaryOpportunityId
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PrimaryOpportunityId
+
+	column PipelineValueUSD
+		dataType: double
+		formatString: $#,##0
+		summarizeBy: sum
+		sourceColumn: PipelineValueUSD
+
+	column SalesStage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SalesStage
+
+	column TotalServiceCases
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: TotalServiceCases
+
+	column SLABreachedCases
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: SLABreachedCases
+
+	/// Prepared scenario score (0-100); a live Databricks feed and model accuracy are not demonstrated here
+	column DatabricksChurnScore
+		dataType: double
+		formatString: 0.0
+		summarizeBy: average
+		sourceColumn: DatabricksChurnScore
+
+	/// Synthesized AI health status: Critical Churn Risk, High Churn Risk, Moderate Risk, or Healthy
+	column AIHealthStatus
+		dataType: string
+		summarizeBy: none
+		sourceColumn: AIHealthStatus
+
+	/// Next-best action recommended for the Data Agent based on D365, SharePoint policy, and Databricks score
+	column AgentRecommendedAction
+		dataType: string
+		summarizeBy: none
+		sourceColumn: AgentRecommendedAction
+
+	partition 'Customer 360 AI Summary' = entity
+		mode: directLake
+		source
+			entityName: gold_customer_360_ai_ready
+			schemaName: dbo
+			expressionSource: DatabaseQuery

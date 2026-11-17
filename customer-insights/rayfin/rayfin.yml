@@ -1,0 +1,37 @@
+id: agent-ready-customer360
+name: Agent-Ready Customer 360
+version: 1.0.0
+services:
+  auth:
+    enabled: true
+    scopes:
+      - read:data
+    password:
+      enabled: false
+    fabric:
+      enabled: true
+    allowedRedirectUris:
+      - http://localhost:5173
+      - http://127.0.0.1:5173
+  data:
+    enabled: false
+  staticHosting:
+    enabled: true
+    folder: dist
+    buildCommand: npm run build:fabric
+    indexDocument: index.html
+    assetAccess: protected
+  storage:
+    enabled: false
+  functions:
+    enabled: false
+connectors:
+  - name: customer360
+    type: fabric-sqlanalytics
+    config:
+      workspaceId: 00000000-0000-0000-0000-000000000001
+      itemId: 00000000-0000-0000-0000-000000000003
+    auth:
+      type: delegated
+    operations:
+      - name: read

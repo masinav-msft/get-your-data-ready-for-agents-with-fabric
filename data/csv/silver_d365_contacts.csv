@@ -1,0 +1,13 @@
+ContactId,AccountNumber,FullName,JobTitle,Email,Phone,BuyingRole
+"DEMO-CONTACT-01","ACC-1001","Demo Contact 01","Example Business Sponsor","contact01@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-02","ACC-1002","Demo Contact 02","Example Business Sponsor","contact02@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-03","ACC-1003","Demo Contact 03","Example Business Sponsor","contact03@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-04","ACC-1004","Demo Contact 04","Example Business Sponsor","contact04@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-05","ACC-1005","Demo Contact 05","Example Business Sponsor","contact05@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-06","ACC-1006","Demo Contact 06","Example Business Sponsor","contact06@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-07","ACC-1007","Demo Contact 07","Example Business Sponsor","contact07@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-08","ACC-1008","Demo Contact 08","Example Business Sponsor","contact08@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-09","ACC-1009","Demo Contact 09","Example Business Sponsor","contact09@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-10","ACC-1010","Demo Contact 10","Example Business Sponsor","contact10@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-11","ACC-1011","Demo Contact 11","Example Business Sponsor","contact11@example.invalid","Not provided","Executive Decision Maker"
+"DEMO-CONTACT-12","ACC-1012","Demo Contact 12","Example Business Sponsor","contact12@example.invalid","Not provided","Executive Decision Maker"

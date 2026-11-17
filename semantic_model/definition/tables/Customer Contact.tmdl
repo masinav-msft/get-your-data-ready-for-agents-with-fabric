@@ -1,0 +1,50 @@
+/// Dynamics 365 Dataverse contacts and executive decision makers linked to customer accounts
+table 'Customer Contact'
+
+	column ContactId
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: ContactId
+
+	column AccountNumber
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+	/// Full name of the customer contact
+	column FullName
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: FullName
+
+	/// Executive or technical job title of the contact
+	column JobTitle
+		dataType: string
+		summarizeBy: none
+		sourceColumn: JobTitle
+
+	column Email
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Email
+
+	column Phone
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Phone
+
+	/// Role in the buying process (e.g., Executive Decision Maker, Technical Buyer)
+	column BuyingRole
+		dataType: string
+		summarizeBy: none
+		sourceColumn: BuyingRole
+
+	partition 'Customer Contact' = entity
+		mode: directLake
+		source
+			entityName: silver_d365_contacts
+			schemaName: dbo
+			expressionSource: DatabaseQuery

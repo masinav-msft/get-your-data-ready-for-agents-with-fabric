@@ -1,0 +1,19 @@
+relationship 'Opportunity to Account'
+	fromColumn: 'Sales Opportunity'.AccountNumber
+	toColumn: 'Customer Account'.AccountNumber
+
+relationship 'Case to Account'
+	fromColumn: 'Service Case'.AccountNumber
+	toColumn: 'Customer Account'.AccountNumber
+
+relationship 'Contact to Account'
+	fromColumn: 'Customer Contact'.AccountNumber
+	toColumn: 'Customer Account'.AccountNumber
+
+relationship 'SLA Policy to Account'
+	fromColumn: 'SharePoint SLA Policy'.AccountNumber
+	toColumn: 'Customer Account'.AccountNumber
+
+relationship 'Customer 360 to Account'
+	fromColumn: 'Customer 360 AI Summary'.AccountNumber
+	toColumn: 'Customer Account'.AccountNumber

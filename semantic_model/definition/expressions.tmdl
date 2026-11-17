@@ -1,0 +1,7 @@
+expression DatabaseQuery =
+		let
+		    database = Sql.Database("example.invalid", "00000000-0000-0000-0000-000000000003")
+		in
+		    database
+
+	annotation PBI_IncludeFutureArtifacts = False

@@ -1,0 +1,65 @@
+/// SharePoint governance list containing SLA response targets, authorized service credits, and renewal playbooks
+table 'SharePoint SLA Policy'
+
+	/// Maximum authorized renewal credit percentage from SharePoint governance policy
+	measure 'Avg Authorized Credit Pct' = AVERAGE('SharePoint SLA Policy'[MaxAuthorizedCreditPct])
+		formatString: 0.0
+
+	column PolicyId
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: PolicyId
+
+	column AccountNumber
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+	column SLATier
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SLATier
+
+	column TargetResponseHours
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: TargetResponseHours
+
+	column ExecutiveSponsor
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ExecutiveSponsor
+
+	/// Prescribed executive renewal playbook from SharePoint governance library
+	column RenewalPlaybook
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: RenewalPlaybook
+
+	/// Regulatory compliance framework (e.g., US-HIPAA, US-SEC-FINRA, US-FedRamp)
+	column ComplianceFramework
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ComplianceFramework
+
+	/// Maximum service credit percentage authorized for SLA breach remediation
+	column MaxAuthorizedCreditPct
+		dataType: double
+		formatString: 0.0
+		summarizeBy: average
+		sourceColumn: MaxAuthorizedCreditPct
+
+	column SharePointDocUrl
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SharePointDocUrl
+
+	partition 'SharePoint SLA Policy' = entity
+		mode: directLake
+		source
+			entityName: silver_sharepoint_sla_policies
+			schemaName: dbo
+			expressionSource: DatabaseQuery

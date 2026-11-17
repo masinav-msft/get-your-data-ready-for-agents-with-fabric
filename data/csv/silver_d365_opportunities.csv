@@ -1,0 +1,13 @@
+OpportunityId,AccountNumber,OpportunityName,SalesStage,ExpectedCloseDate,DealRiskStatus,RiskReason,ProductCode,EstimatedValueUSD,WinProbabilityPct
+"DEMO-OPP-01","ACC-1001","Synthetic renewal 01","Closing","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","200000","60"
+"DEMO-OPP-02","ACC-1002","Synthetic renewal 02","Closing","2027-01-31","High Risk","Prepared risk flag; investigate evidence, do not infer causation","DEMO-SUBSCRIPTION","680000","60"
+"DEMO-OPP-03","ACC-1003","Synthetic renewal 03","Negotiation","2027-01-31","High Risk","Prepared risk flag; investigate evidence, do not infer causation","DEMO-SUBSCRIPTION","520000","60"
+"DEMO-OPP-04","ACC-1004","Synthetic renewal 04","Qualification","2027-01-31","Medium Risk","Prepared risk flag; investigate evidence, do not infer causation","DEMO-SUBSCRIPTION","275000","60"
+"DEMO-OPP-05","ACC-1005","Synthetic renewal 05","Proposal","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","500000","60"
+"DEMO-OPP-06","ACC-1006","Synthetic renewal 06","Negotiation","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","350000","60"
+"DEMO-OPP-07","ACC-1007","Synthetic renewal 07","Closing","2027-01-31","Critical Risk","Prepared risk flag; investigate evidence, do not infer causation","DEMO-SUBSCRIPTION","890000","60"
+"DEMO-OPP-08","ACC-1008","Synthetic renewal 08","Proposal","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","350000","60"
+"DEMO-OPP-09","ACC-1009","Synthetic renewal 09","Negotiation","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","400000","60"
+"DEMO-OPP-10","ACC-1010","Synthetic renewal 10","Qualification","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","350000","60"
+"DEMO-OPP-11","ACC-1011","Synthetic renewal 11","Proposal","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","400000","60"
+"DEMO-OPP-12","ACC-1012","Synthetic renewal 12","Negotiation","2027-01-31","Low Risk","Synthetic baseline scenario","DEMO-SUBSCRIPTION","615000","60"

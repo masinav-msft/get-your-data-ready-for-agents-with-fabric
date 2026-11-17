@@ -1,0 +1,83 @@
+/// Dynamics 365 Customer Service support cases, P1 escalations, SLA breaches, and resolution hours
+table 'Service Case'
+
+	/// Total number of customer support cases logged in Dynamics 365
+	measure 'Total Service Cases' = COUNTROWS('Service Case')
+		formatString: #,##0
+
+	/// Count of flagged cases that are not resolved
+	measure 'SLA Breached Cases' = CALCULATE(COUNTROWS('Service Case'), 'Service Case'[SLABreached] = TRUE(), 'Service Case'[CaseStatus] <> "Resolved")
+		formatString: #,##0
+
+	/// Average resolution or active handling hours per support case
+	measure 'Avg Resolution Hours' = AVERAGE('Service Case'[ResolutionHours])
+		formatString: 0.0
+
+	column CaseNumber
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: CaseNumber
+
+	column AccountNumber
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+	/// Support case title and escalation summary
+	column CaseTitle
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: CaseTitle
+
+	/// Case severity level: P1 - Critical, P2 - High, or P3 - Normal
+	column Priority
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Priority
+
+	/// Current case status: Escalated, Active, or Resolved
+	column CaseStatus
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CaseStatus
+
+	/// Indicates whether the support case breached the customer SLA target (True/False)
+	column SLABreached
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: SLABreached
+
+	/// Hours elapsed on the support case
+	column ResolutionHours
+		dataType: double
+		formatString: 0.0
+		summarizeBy: average
+		sourceColumn: ResolutionHours
+
+	/// Target response hours defined by the customer SLA policy
+	column SLATargetHours
+		dataType: double
+		formatString: 0.0
+		summarizeBy: none
+		sourceColumn: SLATargetHours
+
+	/// Product module affected by the incident
+	column AffectedModule
+		dataType: string
+		summarizeBy: none
+		sourceColumn: AffectedModule
+
+	column CreatedDate
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+	partition 'Service Case' = entity
+		mode: directLake
+		source
+			entityName: silver_d365_service_cases
+			schemaName: dbo
+			expressionSource: DatabaseQuery

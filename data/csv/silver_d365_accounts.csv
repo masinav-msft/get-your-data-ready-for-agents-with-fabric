@@ -1,0 +1,13 @@
+AccountNumber,AccountName,Industry,CustomerSegment,City,StateProvince,Country,AnnualRevenueUSD,EmployeeCount,SLATier,PrimaryContactName,PrimaryContactEmail,ExecutiveSponsor
+"ACC-1001","Example Retail 01","Retail","Commercial","Example City","Example State","Example Country","4850000","100","Gold","Demo Contact 01","contact01@example.invalid","Demo Sponsor 01"
+"ACC-1002","Contoso Healthcare","Healthcare","Enterprise","Example City","Example State","Example Country","4000000","150","Gold","Demo Contact 02","contact02@example.invalid","Demo Sponsor 02"
+"ACC-1003","Fabrikam Manufacturing","Manufacturing","Enterprise","Example City","Example State","Example Country","3000000","200","Gold","Demo Contact 03","contact03@example.invalid","Demo Sponsor 03"
+"ACC-1004","Example Health 04","Healthcare","Commercial","Example City","Example State","Example Country","2000000","250","Gold","Demo Contact 04","contact04@example.invalid","Demo Sponsor 04"
+"ACC-1005","Example Logistics 05","Logistics","Enterprise","Example City","Example State","Example Country","2000000","300","Gold","Demo Contact 05","contact05@example.invalid","Demo Sponsor 05"
+"ACC-1006","Example Energy 06","Energy","Enterprise","Example City","Example State","Example Country","2000000","350","Gold","Demo Contact 06","contact06@example.invalid","Demo Sponsor 06"
+"ACC-1007","Woodgrove Bank","Financial Services","Commercial","Example City","Example State","Example Country","3000000","400","Platinum","Demo Contact 07","contact07@example.invalid","Demo Sponsor 07"
+"ACC-1008","Example Software 08","Technology","Enterprise","Example City","Example State","Example Country","2000000","450","Gold","Demo Contact 08","contact08@example.invalid","Demo Sponsor 08"
+"ACC-1009","Example Retail 09","Retail","Enterprise","Example City","Example State","Example Country","2000000","500","Gold","Demo Contact 09","contact09@example.invalid","Demo Sponsor 09"
+"ACC-1010","Example Services 10","Services","Commercial","Example City","Example State","Example Country","2000000","550","Gold","Demo Contact 10","contact10@example.invalid","Demo Sponsor 10"
+"ACC-1011","Example Education 11","Education","Enterprise","Example City","Example State","Example Country","2000000","600","Gold","Demo Contact 11","contact11@example.invalid","Demo Sponsor 11"
+"ACC-1012","Example Technology 12","Technology","Enterprise","Example City","Example State","Example Country","2240000","650","Gold","Demo Contact 12","contact12@example.invalid","Demo Sponsor 12"

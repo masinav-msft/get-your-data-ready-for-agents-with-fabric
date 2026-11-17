@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Your Data Ready for Agents with Fabric | Customer 360</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to insights</a>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Customer 360 home"><span class="brand-mark">C<span>360</span></span><span>Customer 360<small>BUSINESS INSIGHTS</small></span></a>
+    <div class="workspace-label">D365 + FABRIC EXPERIENCE</div>
+    <nav aria-label="Main navigation">
+      <button data-view="overview" class="nav-button active" aria-current="page"><span aria-hidden="true">&#9638;</span> Business overview</button>
+      <button data-view="accounts" class="nav-button"><span aria-hidden="true">&#9673;</span> Customer accounts</button>
+      <button data-view="pipeline" class="nav-button"><span aria-hidden="true">&#8599;</span> Sales pipeline</button>
+      <button data-view="service" class="nav-button"><span aria-hidden="true">&#9671;</span> Service &amp; SLA</button>
+      <button data-view="sources" class="nav-button"><span aria-hidden="true">&#9783;</span> Data &amp; trust</button>
+    </nav>
+    <section class="sidebar-note">
+      <span class="eyebrow">THE CUSTOMER STORY</span>
+      <p>From disconnected signals to a clearer next move.</p>
+      <small>CRM + policy + predictive risk</small>
+    </section>
+    <div class="sidebar-bottom"><span class="status-dot"></span> POC snapshot <small>Read-only demonstration</small></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div><span class="breadcrumb">Agent-ready data /</span> Customer intelligence</div><div class="topbar-actions"><span class="snapshot-tag">DEMO DATA</span><button id="theme" class="icon-button" aria-label="Toggle light and dark theme">Theme</button><span class="avatar" aria-label="Demo workspace">CX</span></div></header>
+    <main id="main">
+      <div class="page-heading"><div><span class="eyebrow">THE BUSINESS, IN FOCUS</span><h1 id="page-title">Every account. A clearer picture.</h1><p id="page-subtitle">See the opportunity, understand the risk, and know where to act.</p></div><div class="heading-actions"><button id="reload" class="button secondary">Reload snapshot</button><button id="export" class="button primary" disabled>Export accounts <span aria-hidden="true">&#8599;</span></button></div></div>
+      <div class="disclosure"><span class="status-dot"></span><strong>Snapshot demonstration</strong><span>Existing POC CSVs, not a live connection. No CRM changes or AI calls are made.</span><button id="trust-link" class="text-button">View data provenance &#8594;</button></div>
+      <div id="status" role="status" aria-live="polite" class="load-status">Loading customer data...</div>
+      <div id="ingestion-status" class="disclosure" role="status" aria-live="polite" hidden></div>
+      <div id="app" hidden>
+        <form id="filters" class="filters" role="search">
+          <label class="search-label"><span class="sr-only">Search accounts</span><input id="search" type="search" placeholder="Search account, ID or industry..." autocomplete="off"></label>
+          <label>Industry<select id="industry"><option value="">All industries</option></select></label>
+          <label>Segment<select id="segment"><option value="">All segments</option></select></label>
+          <label>Business focus<select id="focus"><option value="">All customers</option><option value="risk">Pipeline at risk</option><option value="churn">Churn score 65+</option><option value="sla">Active SLA breach</option><option value="closing">Closing-stage deals</option></select></label>
+          <button type="button" id="clear-filters" class="text-button">Reset</button>
+        </form>
+        <div id="results-meta" class="results-meta" aria-live="polite"></div>
+        <section id="metrics" class="metrics" aria-label="Business KPIs"></section>
+        <section id="overview-view" aria-label="Business overview">
+          <div class="overview-grid">
+            <section id="priority-panel" class="panel priority-panel"></section>
+            <section class="panel"><div class="panel-heading"><div><span class="eyebrow">OPPORTUNITY LANDSCAPE</span><h2>Pipeline by sales stage</h2></div><span class="pill">USD</span></div><div id="stage-chart"></div><div id="weighted" class="panel-footnote"></div></section>
+          </div>
+          <section class="insights-section"><div class="section-heading"><div><span class="eyebrow">SIGNALS INTO ACTION</span><h2>Your business conversation starters</h2></div><span class="muted">Calculated from the selected snapshot</span></div><div id="insights" class="insight-grid"></div></section>
+        </section>
+        <section id="pipeline-view" class="panel view-panel" hidden></section>
+        <section id="service-view" class="panel view-panel" hidden></section>
+        <section id="sources-view" class="panel view-panel" hidden></section>
+        <section id="accounts-panel" class="panel accounts-panel"><div class="panel-heading"><div><span class="eyebrow">CUSTOMER PORTFOLIO</span><h2 id="table-title">Where to focus next</h2></div><label class="sort-label">Sort by<select id="sort"><option value="risk">Churn risk</option><option value="pipeline">Pipeline value</option><option value="name">Account name</option></select></label></div><div class="table-scroll"><table><caption class="sr-only">Customer accounts. Select an account to see its business briefing.</caption><thead><tr><th scope="col">Customer account</th><th scope="col">Pipeline</th><th scope="col">Churn score</th><th scope="col">SLA breaches</th><th scope="col">Health</th><th scope="col">Next step</th></tr></thead><tbody id="account-rows"></tbody></table></div><div class="table-footer"><span id="table-count"></span><span>Select an account for the full business story &#8594;</span></div></section>
+        <footer class="page-footer"><span>Customer 360 / Fabric-ready business experience</span><span id="loaded-time"></span></footer>
+      </div>
+    </main>
+  </div>
+  <dialog id="account-dialog" aria-labelledby="dialog-title">
+    <div class="drawer-header"><span class="eyebrow">CUSTOMER BUSINESS BRIEFING</span><button id="close-dialog" class="icon-button" aria-label="Close account details">Close &#215;</button></div>
+    <div id="account-detail"></div>
+    <div class="drawer-footer"><span>Snapshot only. No action is sent to D365.</span><button id="download-brief" class="button primary">Download briefing</button></div>
+  </dialog>
+</body>
+</html>

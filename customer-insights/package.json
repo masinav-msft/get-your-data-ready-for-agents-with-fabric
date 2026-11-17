@@ -1,0 +1,36 @@
+{
+  "name": "agent-ready-fabric-customer360",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Get your data ready for agents with Fabric: Dynamics 365, SharePoint and Databricks Customer 360 POC.",
+  "scripts": {
+    "start": "node server.mjs",
+    "start:live": "node server.mjs --live",
+    "sync:d365": "node sync-d365.mjs",
+    "sync:d365:watch": "node sync-d365.mjs --watch",
+    "deploy:refresh": "node sync-d365.mjs --deploy",
+    "build:html": "node build-html.mjs",
+    "test": "node --test",
+    "build:fabric": "tsc --noEmit && node build-fabric.mjs",
+    "deploy:fabric": "rayfin up"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.14.1",
+    "mssql": "^12.7.13",
+    "@microsoft/rayfin-auth-provider-fabric": "1.36.2",
+    "@microsoft/rayfin-client": "1.36.2",
+    "@microsoft/rayfin-core": "1.36.2",
+    "@microsoft/rayfin-connector-fabric-graphql": "1.36.2",
+    "@microsoft/rayfin-connectors": "1.36.2"
+  },
+  "devDependencies": {
+    "@microsoft/rayfin-cli": "1.36.2",
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.27.0",
+    "typescript": "^5.9.3"
+  }
+}

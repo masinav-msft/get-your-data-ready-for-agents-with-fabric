@@ -1,0 +1,13 @@
+{
+  "workspaceName": "AgentReadyFabricDemo",
+  "workspaceId": "00000000-0000-0000-0000-000000000001",
+  "lakehouseName": "AgentReadyCustomer360",
+  "lakehouseId": "00000000-0000-0000-0000-000000000002",
+  "sqlEndpointId": "00000000-0000-0000-0000-000000000003",
+  "server": "example.invalid",
+  "database": "AgentReadyCustomer360",
+  "dataverseUrl": "https://example.invalid",
+  "refreshNotebookName": "NB_Customer360_Dataverse_Refresh",
+  "refreshSeconds": 60,
+  "ingestionPollSeconds": 60
+}

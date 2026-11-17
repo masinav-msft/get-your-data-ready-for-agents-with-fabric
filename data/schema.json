@@ -1,0 +1,278 @@
+{
+  "silver_d365_accounts": [
+    {
+      "name": "AccountNumber",
+      "type": "string"
+    },
+    {
+      "name": "AccountName",
+      "type": "string"
+    },
+    {
+      "name": "Industry",
+      "type": "string"
+    },
+    {
+      "name": "CustomerSegment",
+      "type": "string"
+    },
+    {
+      "name": "City",
+      "type": "string"
+    },
+    {
+      "name": "StateProvince",
+      "type": "string"
+    },
+    {
+      "name": "Country",
+      "type": "string"
+    },
+    {
+      "name": "AnnualRevenueUSD",
+      "type": "integer"
+    },
+    {
+      "name": "EmployeeCount",
+      "type": "integer"
+    },
+    {
+      "name": "SLATier",
+      "type": "string"
+    },
+    {
+      "name": "PrimaryContactName",
+      "type": "string"
+    },
+    {
+      "name": "PrimaryContactEmail",
+      "type": "string"
+    },
+    {
+      "name": "ExecutiveSponsor",
+      "type": "string"
+    }
+  ],
+  "silver_d365_contacts": [
+    {
+      "name": "ContactId",
+      "type": "string"
+    },
+    {
+      "name": "AccountNumber",
+      "type": "string"
+    },
+    {
+      "name": "FullName",
+      "type": "string"
+    },
+    {
+      "name": "JobTitle",
+      "type": "string"
+    },
+    {
+      "name": "Email",
+      "type": "string"
+    },
+    {
+      "name": "Phone",
+      "type": "string"
+    },
+    {
+      "name": "BuyingRole",
+      "type": "string"
+    }
+  ],
+  "silver_d365_opportunities": [
+    {
+      "name": "OpportunityId",
+      "type": "string"
+    },
+    {
+      "name": "AccountNumber",
+      "type": "string"
+    },
+    {
+      "name": "OpportunityName",
+      "type": "string"
+    },
+    {
+      "name": "SalesStage",
+      "type": "string"
+    },
+    {
+      "name": "ExpectedCloseDate",
+      "type": "string"
+    },
+    {
+      "name": "DealRiskStatus",
+      "type": "string"
+    },
+    {
+      "name": "RiskReason",
+      "type": "string"
+    },
+    {
+      "name": "ProductCode",
+      "type": "string"
+    },
+    {
+      "name": "EstimatedValueUSD",
+      "type": "integer"
+    },
+    {
+      "name": "WinProbabilityPct",
+      "type": "integer"
+    }
+  ],
+  "silver_d365_service_cases": [
+    {
+      "name": "CaseNumber",
+      "type": "string"
+    },
+    {
+      "name": "AccountNumber",
+      "type": "string"
+    },
+    {
+      "name": "CaseTitle",
+      "type": "string"
+    },
+    {
+      "name": "Priority",
+      "type": "string"
+    },
+    {
+      "name": "CaseStatus",
+      "type": "string"
+    },
+    {
+      "name": "SLABreached",
+      "type": "boolean"
+    },
+    {
+      "name": "AffectedModule",
+      "type": "string"
+    },
+    {
+      "name": "CreatedDate",
+      "type": "string"
+    },
+    {
+      "name": "ResolutionHours",
+      "type": "double"
+    },
+    {
+      "name": "SLATargetHours",
+      "type": "double"
+    }
+  ],
+  "silver_sharepoint_sla_policies": [
+    {
+      "name": "PolicyId",
+      "type": "string"
+    },
+    {
+      "name": "AccountNumber",
+      "type": "string"
+    },
+    {
+      "name": "SLATier",
+      "type": "string"
+    },
+    {
+      "name": "ExecutiveSponsor",
+      "type": "string"
+    },
+    {
+      "name": "RenewalPlaybook",
+      "type": "string"
+    },
+    {
+      "name": "ComplianceFramework",
+      "type": "string"
+    },
+    {
+      "name": "TargetResponseHours",
+      "type": "integer"
+    },
+    {
+      "name": "MaxAuthorizedCreditPct",
+      "type": "integer"
+    },
+    {
+      "name": "SharePointDocUrl",
+      "type": "string"
+    }
+  ],
+  "gold_customer_360_ai_ready": [
+    {
+      "name": "AccountNumber",
+      "type": "string"
+    },
+    {
+      "name": "AccountName",
+      "type": "string"
+    },
+    {
+      "name": "Industry",
+      "type": "string"
+    },
+    {
+      "name": "CustomerSegment",
+      "type": "string"
+    },
+    {
+      "name": "City",
+      "type": "string"
+    },
+    {
+      "name": "StateProvince",
+      "type": "string"
+    },
+    {
+      "name": "AnnualRevenueUSD",
+      "type": "integer"
+    },
+    {
+      "name": "SLATier",
+      "type": "string"
+    },
+    {
+      "name": "ExecutiveSponsor",
+      "type": "string"
+    },
+    {
+      "name": "PrimaryOpportunityId",
+      "type": "string"
+    },
+    {
+      "name": "PipelineValueUSD",
+      "type": "integer"
+    },
+    {
+      "name": "SalesStage",
+      "type": "string"
+    },
+    {
+      "name": "TotalServiceCases",
+      "type": "integer"
+    },
+    {
+      "name": "SLABreachedCases",
+      "type": "integer"
+    },
+    {
+      "name": "DatabricksChurnScore",
+      "type": "double"
+    },
+    {
+      "name": "AIHealthStatus",
+      "type": "string"
+    },
+    {
+      "name": "AgentRecommendedAction",
+      "type": "string"
+    }
+  ]
+}

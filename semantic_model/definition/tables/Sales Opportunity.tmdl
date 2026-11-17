@@ -1,0 +1,84 @@
+/// Dynamics 365 active sales pipeline opportunities, stages, deal values, and risk status
+table 'Sales Opportunity'
+
+	/// Total open sales pipeline opportunity value in USD
+	measure 'Total Pipeline Value' = SUM('Sales Opportunity'[EstimatedValueUSD])
+		formatString: $#,##0
+
+	/// Pipeline value flagged Medium Risk, High Risk or Critical Risk; not a causal attribution to support cases
+	measure 'Pipeline at Risk USD' = CALCULATE(SUM('Sales Opportunity'[EstimatedValueUSD]), 'Sales Opportunity'[DealRiskStatus] IN {"High Risk", "Critical Risk", "Medium Risk"})
+		formatString: $#,##0
+
+	/// Average win probability percentage across opportunities
+	measure 'Avg Win Probability' = AVERAGE('Sales Opportunity'[WinProbabilityPct])
+		formatString: 0.0
+
+	column OpportunityId
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: OpportunityId
+
+	column AccountNumber
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+	/// Name of the sales deal or expansion opportunity
+	column OpportunityName
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: OpportunityName
+
+	/// Current Dynamics 365 sales stage: Qualification, Proposal, Negotiation, or Closing
+	column SalesStage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SalesStage
+
+	/// Estimated deal value in USD
+	column EstimatedValueUSD
+		dataType: double
+		formatString: $#,##0
+		summarizeBy: sum
+		sourceColumn: EstimatedValueUSD
+
+	/// Probability of winning the opportunity (0-100)
+	column WinProbabilityPct
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: average
+		sourceColumn: WinProbabilityPct
+
+	/// Target close date for the opportunity
+	column ExpectedCloseDate
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ExpectedCloseDate
+
+	/// Deal risk classification: Critical Risk, High Risk, Medium Risk, or Low Risk
+	column DealRiskStatus
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DealRiskStatus
+
+	/// Root cause explanation for deal risk
+	column RiskReason
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RiskReason
+
+	/// Primary product code associated with the opportunity
+	column ProductCode
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+	partition 'Sales Opportunity' = entity
+		mode: directLake
+		source
+			entityName: silver_d365_opportunities
+			schemaName: dbo
+			expressionSource: DatabaseQuery

@@ -1,0 +1,99 @@
+/// Dynamics 365 Dataverse customer account master table with annual revenue, industry, segment, and SLA tier
+table 'Customer Account'
+
+	/// Sum of customer annual revenue in USD; not the presenting company's ARR
+	measure 'Total Annual Revenue' = SUM('Customer Account'[AnnualRevenueUSD])
+		formatString: $#,##0
+
+	/// Total count of active Dynamics 365 customer accounts
+	measure 'Total Accounts' = COUNTROWS('Customer Account')
+		formatString: #,##0
+
+	/// Unique Dynamics 365 Account Number (e.g., ACC-1001)
+	column AccountNumber
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+	/// Customer organization name in Dynamics 365
+	column AccountName
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: AccountName
+
+	/// Primary industry vertical of the customer account
+	column Industry
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Industry
+
+	/// Market segment tier: Strategic, Enterprise, Commercial, or Mid-Market
+	column CustomerSegment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CustomerSegment
+
+	/// Headquarters city of the customer account
+	column City
+		dataType: string
+		summarizeBy: none
+		sourceColumn: City
+
+	/// US state or province of the customer account
+	column StateProvince
+		dataType: string
+		summarizeBy: none
+		sourceColumn: StateProvince
+
+	/// Country of the customer account
+	column Country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Country
+
+	/// Annual revenue of the customer account in USD
+	column AnnualRevenueUSD
+		dataType: double
+		formatString: $#,##0
+		summarizeBy: sum
+		sourceColumn: AnnualRevenueUSD
+
+	/// Number of employees at the customer organization
+	column EmployeeCount
+		dataType: int64
+		formatString: #,##0
+		summarizeBy: sum
+		sourceColumn: EmployeeCount
+
+	/// Contracted SLA service tier: Platinum, Gold, or Silver
+	column SLATier
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SLATier
+
+	/// Primary executive contact full name in Dynamics 365
+	column PrimaryContactName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PrimaryContactName
+
+	/// Primary executive contact email address
+	column PrimaryContactEmail
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PrimaryContactEmail
+
+	/// Internal executive sponsor assigned to the account
+	column ExecutiveSponsor
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ExecutiveSponsor
+
+	partition 'Customer Account' = entity
+		mode: directLake
+		source
+			entityName: silver_d365_accounts
+			schemaName: dbo
+			expressionSource: DatabaseQuery

@@ -1,0 +1,27 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+ref table 'Customer Account'
+ref table 'Customer Contact'
+ref table 'Sales Opportunity'
+ref table 'Service Case'
+ref table 'SharePoint SLA Policy'
+ref table 'Customer 360 AI Summary'
+
+ref relationship 'Opportunity to Account'
+ref relationship 'Case to Account'
+ref relationship 'Contact to Account'
+ref relationship 'SLA Policy to Account'
+ref relationship 'Customer 360 to Account'
+
+ref expression DatabaseQuery

@@ -1,0 +1,11 @@
+CaseNumber,AccountNumber,CaseTitle,Priority,CaseStatus,SLABreached,AffectedModule,CreatedDate,ResolutionHours,SLATargetHours
+"DEMO-CASE-01","ACC-1002","Synthetic support scenario 1","P1 - Critical","Escalated","True","Demo service","2026-11-01","12","4"
+"DEMO-CASE-02","ACC-1003","Synthetic support scenario 2","P1 - Critical","Escalated","True","Demo service","2026-11-01","12","4"
+"DEMO-CASE-03","ACC-1004","Synthetic support scenario 3","P3 - Normal","Active","False","Demo service","2026-11-01","2","4"
+"DEMO-CASE-04","ACC-1005","Synthetic support scenario 4","P3 - Normal","Active","False","Demo service","2026-11-01","2","4"
+"DEMO-CASE-05","ACC-1007","Synthetic support scenario 5","P1 - Critical","Escalated","True","Demo service","2026-11-01","12","4"
+"DEMO-CASE-06","ACC-1007","Synthetic support scenario 6","P1 - Critical","Escalated","True","Demo service","2026-11-01","12","4"
+"DEMO-CASE-07","ACC-1008","Synthetic support scenario 7","P3 - Normal","Active","False","Demo service","2026-11-01","2","4"
+"DEMO-CASE-08","ACC-1001","Synthetic support scenario 8","P3 - Normal","Resolved","False","Demo service","2026-11-01","2","4"
+"DEMO-CASE-09","ACC-1006","Synthetic support scenario 9","P3 - Normal","Resolved","False","Demo service","2026-11-01","2","4"
+"DEMO-CASE-10","ACC-1009","Synthetic support scenario 10","P3 - Normal","Resolved","False","Demo service","2026-11-01","2","4"
